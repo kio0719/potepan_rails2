@@ -12,26 +12,16 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to users_profile_path
     else
-      render "profile_update"
+      render "profile_edit"
     end
   end
   def account
     @user = current_user
   end
-  def account_edit
-    @user = current_user
-  end
-  def account_update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to users_account_path
-    else
-      render "account_edit"
-    end
-  end
+
 
   private
   def user_params
-    params.require(:user).permit(:name,:email,:password,:icon)
+    params.require(:user).permit(:name,:icon,:introduction)
   end
 end
