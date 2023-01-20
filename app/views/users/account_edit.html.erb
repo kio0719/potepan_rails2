@@ -1,0 +1,16 @@
+<h3>Account_Edit</h3>
+<%= form_with model: @user,url: users_account_update_path do |f| %>
+<table>
+<tr>
+  <th><%= f.label :email,"メールアドレス" %></th>
+  <td><%= f.email_field :email %></td>
+</tr>
+<tr>
+  <th><%= f.label :password,"パスワード" %></th>
+  <td><%= f.password_field :password %></td>
+</tr>
+</table>
+
+<div><%= link_to "戻る",users_account_path %></div>
+<div><%= f.submit "更新" %></div>
+<% end %>

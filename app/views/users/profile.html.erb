@@ -3,9 +3,20 @@
 
 <table>
   <tr>
+    <th>アイコン画像</th>
+    <td>
+      <% if @user.icon? %>
+        <%= image_tag @user.icon.url  %>
+      <% else %>
+        <%= image_tag ("default.png")  %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
     <th>名前</th>
     <td><%= @user.name %></td>
   </tr>
 </table>
 
+<%= link_to "編集",users_profile_edit_path %>
 <%= link_to "アカウント",users_account_path %>

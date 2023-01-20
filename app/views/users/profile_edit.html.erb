@@ -1,0 +1,17 @@
+<h3>Profile_Edit</h3>
+<%= form_with model: @user,url: users_profile_update_path do |f| %>
+<table>
+<tr>
+  <th><%= f.label :icon,"アイコン画像" %></th>
+  <td><%= f.file_field :icon %></td>
+</tr>
+<tr>
+  <th><%= f.label :name,"名前" %></th>
+  <td><%= f.text_field :name %></td>
+</tr>
+
+</table>
+
+<div><%= link_to "戻る",users_profile_path %></div>
+<div><%= f.submit "更新" %></div>
+<% end %>
