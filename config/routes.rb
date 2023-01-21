@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
   root :to => 'home#index'
 
   get 'users/profile'
@@ -9,8 +10,10 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-
-  # マイページのルーティング
-  get 'users/profile', to: 'users#profile', as: 'user_profile'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :rooms do
+    collection do
+      get 'own'
+    end
+    
+  end
 end

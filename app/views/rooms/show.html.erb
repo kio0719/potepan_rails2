@@ -1,0 +1,29 @@
+<h3>施設詳細</h3>
+ 
+ <table>
+   <thead>
+     <tr>
+       <th>施設画像</th>
+       <th>施設名</th>
+       <th>紹介文</th>
+       <th>宿泊料金</th>
+     </tr>
+   </thead>
+ 
+   <tbody>
+       <tr>
+         <td>
+         <% if @room.image? %>
+            <%= image_tag @room.image.url %>
+        <% else %>
+            <%= image_tag ("room_default.png") %>
+        <% end %>
+         </td>
+         <td><%= @room.name %></td>
+         <td><%= @room.introduction %></td>
+         <td><%= @room.fee %></td>
+       </tr>
+   </tbody>
+ </table>
+ <%= link_to "更新",[:edit,@room] %>
+ <p><%= link_to "施設一覧に戻る", :rooms %></p>
