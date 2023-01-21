@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
     if @room.update(room_params)
       redirect_to :rooms
     else
-      render "show"
+      render "edit"
     end
   end
   def destroy
