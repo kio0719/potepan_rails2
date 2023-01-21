@@ -28,7 +28,7 @@
          <td><%= room.name %></td>
          <td><%= room.introduction %></td>
          <td><%= room.fee %></td>
-         <td><%= room.created_at %></td>
+         <td><%= room.created_at.to_s(:datetime_jp) %></td>
          <td><%= room.user_id %></td>
          <td><%= link_to "参照",room %></td>
          <td><%= link_to "更新",[:edit,room] %></td>
