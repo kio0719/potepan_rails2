@@ -1,0 +1,38 @@
+
+<div>
+    <div>
+    <div>チェックイン</div>
+    <div><%= @reservation.check_in %></dev>
+    </div>
+    <div>
+    <div>チェックアウト</div>
+    <div><%= @reservation.check_out %></dev>
+    </div>
+    <div>
+    <div>日数</div>
+    <div><%= @count_date %></dev>
+    </div>
+    <div>人数</div>
+    <div><%= @reservation.users_num %></dev>
+    </div>
+    <div>お支払い金額</div>
+    <div><%= @total_fee %></dev>
+    </div>
+    <p>上記で良ければ確定ボタンを押してください</p>
+</div>
+
+<%= form_with model: @reservation do |f| %>
+<div>
+    <div>
+      <div><%= f.hidden_field :check_in ,value: @reservation.check_in%></dev>
+    </div>
+    <div>
+      <div><%= f.hidden_field :check_out,value: @reservation.check_out %></dev>
+    </div>
+    <div>
+      <div><%= f.hidden_field :users_num,value: @reservation.users_num %></dev>
+    </div>
+</div>
+<div><%= f.submit "再予約する" %></div>
+<div><%= link_to "修正する",[:edit,@reservation] %></div>
+<% end %>
