@@ -14,4 +14,8 @@
          fee:  料金
          introduction: 施設詳細
          address: 住所
+       reservation:
+         check_in: チェックイン
+         check_out: チェックアウト
+         users_num: 人数
 

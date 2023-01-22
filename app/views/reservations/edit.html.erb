@@ -1,5 +1,5 @@
 <h3>再予約する</h3>
- 
+<%= render "shared/error",obj:@reservation %>
  <table>
    <thead>
      <tr>
@@ -39,6 +39,6 @@
       <div><%= f.text_field :users_num %></dev>
     </div>
   </div>
-  <div><%= f.submit "予約する" %></div>
+  <div><%= f.submit "再予約する" %></div>
 <% end %>
  <p><%= link_to "戻る", :reservations %></p>
