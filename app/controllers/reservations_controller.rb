@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.where(user_id: current_user)
+    @reservations = Reservation.where(user_id: current_user.id)
+    @room = Room.all
   end
   def confirm
     @reservation = Reservation.new(reservation_params)

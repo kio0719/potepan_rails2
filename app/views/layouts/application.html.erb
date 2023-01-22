@@ -11,16 +11,20 @@
   </head>
 
   <body>
-  <header>
-    <ul>
+  <header class="header">
+    <div><a href="/">Potepan Share</a></div>
     <% if user_signed_in? %>
-      <li><%= link_to "ログアウト", destroy_user_session_path,method: :delete %></li>
+      <div><%= link_to "ログアウト", destroy_user_session_path,method: :delete %></div>
     <% else %>
+    <ul class="header-nav">
       <li><%= link_to "新規登録", new_user_registration_path %></li>
       <li><%= link_to "ログイン", new_user_session_path %></li>
-    <% end %>
     </ul>
+    <% end %>
   </header>
   <%= yield %>
+  <footer class="footer">
+    <div>Potepan Share</div>
+  </footer>
   </body>
 </html>

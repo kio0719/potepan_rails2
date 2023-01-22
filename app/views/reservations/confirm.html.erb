@@ -1,40 +1,39 @@
+<div class="wrapper">
+  <h3  class="room_title">予約内容の確認</h3>
+  
+  <table class="room_table">
+    <tr>
+      <td>チェックイン</td>
+      <td><%= @reservation.check_in %></td>
+    </tr>
+    <tr>
+      <td>チェックアウト</td>
+      <td><%= @reservation.check_out %></td>
+    </tr>
+    <tr>
+      <td>日数</td>
+      <td><%= @count_date %> 日</td>
+    </tr>
+    <tr>
+      <td>人数</td>
+      <td><%= @reservation.users_num %> 人</td>
+    </tr>
+    <tr>
+      <td>お支払い金額</td>
+      <td><%= @total_fee %> 円</td>
+    </tr>
+  </table>
+  <%= form_with model: @reservation do |f| %>
+    <%= f.hidden_field :check_in ,value: @reservation.check_in%>
+    <%= f.hidden_field :check_out,value: @reservation.check_out %>
+    <%= f.hidden_field :users_num,value: @reservation.users_num %>
+    <%= f.hidden_field :user_id,value: @reservation.user_id %>
+    <%= f.hidden_field :room_id,value: @reservation.room_id %>
 
-<div>
-    <div>
-    <div>チェックイン</div>
-    <div><%= @reservation.check_in %></dev>
-    </div>
-    <div>
-    <div>チェックアウト</div>
-    <div><%= @reservation.check_out %></dev>
-    </div>
-    <div>
-    <div>日数</div>
-    <div><%= @count_date %></dev>
-    </div>
-    <div>人数</div>
-    <div><%= @reservation.users_num %></dev>
-    </div>
-    <div>お支払い金額</div>
-    <div><%= @total_fee %></dev>
-    </div>
-    <p>上記で良ければ確定ボタンを押してください</p>
+    <p>上記内容で正しければ「確定」ボタンを押してください。</p>
+    <ul class="btn_group">
+      <li><%= link_to "キャンセル",room_path(@reservation.room_id),class: "left_btn" %></li>
+      <li><%= f.submit "予約を確定する" %></li>
+    </ul>
+  <% end %>
 </div>
-
-<%= form_with model: @reservation do |f| %>
-<div>
-    <div>
-      <div><%= f.hidden_field :check_in ,value: @reservation.check_in%></dev>
-    </div>
-    <div>
-      <div><%= f.hidden_field :check_out,value: @reservation.check_out %></dev>
-    </div>
-    <div>
-      <div><%= f.hidden_field :users_num,value: @reservation.users_num %></dev>
-    </div>
-</div>
-<%= f.hidden_field :user_id,value: @reservation.user_id %>
-<%= f.hidden_field :room_id,value: @reservation.room_id %>
-<div><%= link_to "修正する",room_path(@reservation.room_id) %></div>
-<div><%= f.submit "予約する" %></div>
-<% end %>

@@ -1,22 +1,28 @@
-<h3>Profile_Edit</h3>
+<div class="user_content"> 
+  <h3>Profile_Edit</h3>
 
-<%= render "shared/error",obj:@user %>
-<%= form_with model: @user,url: users_profile_update_path do |f| %>
-<table>
-<tr>
-  <th><%= f.label :icon,"アイコン画像" %></th>
-  <td><%= f.file_field :icon %></td>
-</tr>
-<tr>
-  <th><%= f.label :name,"名前" %></th>
-  <td><%= f.text_field :name %></td>
-</tr>
-<tr>
-  <th><%= f.label :introduction,"自己紹介" %></th>
-  <td><%= f.text_area :introduction %></td>
-</tr>
-</table>
-
-<div><%= link_to "戻る",users_profile_path %></div>
-<div><%= f.submit "更新" %></div>
-<% end %>
+  <%= render "shared/error",obj:@user %>
+  <%= form_with model: @user,url: users_profile_update_path do |f| %>
+  <table class="user_table">
+  <tr>
+    <td><%= f.label :icon,"アイコン画像" %></td>
+    <td><%= f.file_field :icon %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :name,"名前" %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :introduction,"自己紹介" %></td>
+    <td><%= f.text_area :introduction %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="btn-group">
+      <%= link_to "キャンセル",users_profile_path,class:"left_btn" %>
+      <%= f.submit "更新" %>
+    </td>
+  </tr>
+  </table>
+  <% end %>
+</div>
