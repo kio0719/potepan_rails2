@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     if @reservation.invalid?
       @room = Room.find(@reservation.room_id)
-      render "rooms/show",{id: @reservation.room_id}
+      render "rooms/show"
     else
       total_fee_date_calc
     end

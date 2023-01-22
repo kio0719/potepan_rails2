@@ -1,7 +1,5 @@
 <h3>施設詳細</h3>
-<% if @reservation %>
  <%= render "shared/error",obj: @reservation %>
-<% end %>
  <table>
    <thead>
      <tr>
@@ -26,7 +24,7 @@
        </tr>
    </tbody>
  </table>
-<%= form_with model: Reservation.new, url: confirm_reservations_path do |f| %>
+<%= form_with model: @reservation, url: confirm_reservations_path do |f| %>
   <div>
     <div>
       <div><%= f.label :check_in,"チェックイン"%></div>
@@ -41,9 +39,13 @@
       <div><%= f.text_field :users_num %></dev>
     </div>
   </div>
-  <%= f.hidden_field :user_id,value: current_user.id %>
-  <%= f.hidden_field :room_id,value: @room.id %>
-  <div><%= f.submit "予約する" %></div>
+  <% if user_signed_in? %>
+    <%= f.hidden_field :user_id,value: current_user.id %>
+    <%= f.hidden_field :room_id,value: @room.id %>
+    <div><%= f.submit "予約する" %></div>
+  <% else %>
+    <%= link_to "ログインする",new_user_session_path %>
+  <% end %>
 <% end %>
  <%= link_to "更新",[:edit,@room] %>
  <p><%= link_to "施設一覧に戻る", :rooms %></p>
