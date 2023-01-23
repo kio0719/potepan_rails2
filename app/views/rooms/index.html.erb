@@ -3,17 +3,17 @@
  <table class="room_table">
    <thead>
      <tr>
+      <th>施設名</th>
        <th>施設画像</th>
-       <th>施設名</th>
        <th>紹介文</th>
        <th>宿泊料金</th>
        <th>作成日</th>
-       <td></td>
      </tr>
    </thead>
    <tbody>
      <% @rooms.each do |room| %>
        <tr>
+         <td><%= link_to "#{room.name}",room %></td>
          <td>
          <% if room.image? %>
             <%= image_tag room.image.url %>
@@ -21,19 +21,12 @@
             <%= image_tag ("room_default.png") %>
         <% end %>
          </td>
-         <td><%= room.name %></td>
          <td><%= room.introduction %></td>
          <td><%= room.fee %> 円</td>
          <td><%= room.created_at.to_s(:datetime_jp) %></td>
-         <td><%= link_to "詳細はこちら",room %></td>
        </tr>
      <% end %>
    </tbody>
  </table>
  </div>
  
- <p><%= link_to "施設登録", :new_room %></p>
- <p><%= link_to "登録済み一覧", own_rooms_path %></p>
- <p><%= link_to "予約済み一覧", :reservations %></p>
- <p><%= link_to "アカウント情報へ", users_account_path %></p>
- <p><%= link_to "プロフィール画面へ", users_profile_path %></p>

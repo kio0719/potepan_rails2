@@ -27,7 +27,7 @@
       </tr>
       <tr>
        <th>宿泊料金</th>
-       <td><%= @reservation.room.fee %></td>
+       <td><%= @reservation.room.fee %> 円</td>
       </tr>
       <tr>
         <td colspan="2">
@@ -43,7 +43,7 @@
             </div>
             <div>
               <div><%= f.label :users_num,"人数" %></div>
-              <div><%= f.text_field :users_num %></dev>
+              <div><%= f.text_field :users_num %> 人</dev>
             </div>
           </div>
             <%= f.hidden_field :user_id,value: current_user.id %>

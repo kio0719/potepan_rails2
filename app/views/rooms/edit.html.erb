@@ -4,20 +4,17 @@
 <%= form_with model: @room do |f| %>
   <table  class="room_table">
     <tr>
-      <th><%= f.label :name ,"施設名" %></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-
-    <tr>
       <th><%= f.label :introduction ,"施設詳細" %></th>
       <td><%= f.text_area :introduction %></td>
     </tr>
-
+    <tr>
+      <th><%= f.label :name ,"施設名" %></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
     <tr>
       <th><%= f.label :fee ,"料金" %></th>
       <td><%= f.text_field :fee %></td>
     </tr>
-
     <tr>
       <th><%= f.label :address ,"住所" %></th>
       <td><%= f.text_field :address %></td>
@@ -27,7 +24,6 @@
         <td><%= f.file_field :image %></td>
     </tr>
   </table>
-
     <ul class="btn_group">
       <li><%= link_to "施設情報一覧に戻る", :rooms,class:"left_btn" %></li>
       <li><%= f.submit "更新する" %></li>
