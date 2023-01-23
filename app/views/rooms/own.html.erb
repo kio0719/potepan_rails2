@@ -1,7 +1,6 @@
 <div class="wrapper">
-<h3  class="room_title">登録済み一覧</h3>
- 
- <table class="room_table">
+  <h3  class="room_title">登録済み一覧</h3>
+  <table class="room_table">
    <thead>
      <tr>
        <th>施設名</th>
@@ -9,33 +8,30 @@
        <th>紹介文</th>
        <th>宿泊料金</th>
        <th>作成日</th>
-       <th>user_id</th>
        <td></td>
        <td></td>
        <td></td>
      </tr>
    </thead>
- 
    <tbody>
      <% @rooms.each do |room| %>
        <tr>
          <td><%= room.name %></td>
          <td>
-         <% if room.image? %>
-            <%= image_tag room.image.url %>
-        <% else %>
-            <%= image_tag ("room_default.png") %>
-        <% end %>
+          <% if room.image? %>
+              <%= image_tag room.image.url %>
+          <% else %>
+              <%= image_tag ("room_default.png") %>
+          <% end %>
          </td>
          <td><%= room.introduction %></td>
-         <td><%= room.fee %></td>
-         <td><%= room.created_at %></td>
-         <td><%= room.user_id %></td>
+         <td><%= room.fee %> 円</td>
+         <td><%= room.created_at.to_s(:datetime_jp) %></td>
          <td><%= link_to "参照",room %></td>
          <td><%= link_to "更新",[:edit,room] %></td>
          <td><%= link_to "削除",room,method: :delete,data:{confirm:"本当に削除しますか？"} %></td>
        </tr>
      <% end %>
    </tbody>
- </table>
+  </table>
  </div>

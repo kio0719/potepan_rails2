@@ -3,7 +3,7 @@
 <div class="current_user_btn">
 
   <%= link_to "施設一覧に戻る", :rooms %>
-<% if @room.user_id == current_user.id %>
+<% if user_signed_in? && @room.user_id == current_user.id %>
     <%= link_to "編集",[:edit,@room] %>
 <% end %>
 </div>

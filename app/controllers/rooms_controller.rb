@@ -1,7 +1,9 @@
 class RoomsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :set_q,only: :index
   def index
-    @rooms = Room.all
+    @results = @q.result
+    @count = @results.count
   end
   def own
     @rooms = Room.where(user_id: current_user.id)
@@ -38,6 +40,10 @@ class RoomsController < ApplicationController
     redirect_to :rooms
   end
 
+  private
+  def set_q
+    @q = Room.ransack(params[:q])
+  end
   def room_params
     params.require(:room).permit(:name,:address,:introduction,:fee,:user_id,:image)
   end

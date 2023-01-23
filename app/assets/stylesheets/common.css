@@ -143,5 +143,7 @@ li{
   justify-content: space-between;
   margin:30px auto 10px;
 }
-
-
+.search_box{
+  margin:30px auto;
+  width:800px;
+}
