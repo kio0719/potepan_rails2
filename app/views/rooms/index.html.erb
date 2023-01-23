@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <div class="search_box">
+    <%= search_form_for @q,url: rooms_index_path do |f| %>
+      <%= f.label :address_cont,"エリア名" %>
+      <%= f.search_field :address_cont %>
+      <%= f.label :name_or_introduction_cont, "フリーワード" %>
+      <%= f.search_field :name_or_introduction_cont %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+  <p><%= @count %> 件が見つかりました。</p>
+  <table class="room_table">
+    <thead>
+      <tr>
+        <th>施設名</th>
+        <th>施設画像</th>
+        <th>住所</th>
+        <th>紹介文</th>
+        <th>宿泊料金</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |room| %>
+        <tr>
+          <td><%= room.name %></td>
+          <td>
+          <% if room.image? %>
+              <%= image_tag room.image.url %>
+          <% else %>
+              <%= image_tag ("room_default.png") %>
+          <% end %>
+          </td>
+          <td><%= room.address %></td>
+          <td><%= room.introduction %></td>
+          <td><%= room.fee %> 円</td>
+          <td><%= link_to "詳細はこちら",room %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+ </div>

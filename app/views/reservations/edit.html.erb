@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <h3 class="room_title">施設詳細</h3>
+  <% if flash['warning'] %>
+    <p class="warning"><%= flash['warning'] %></p>
+  <% end %>
+  <%= render "shared/error",obj: @reservation %>
+  <table  class="room_table">
+    <tr>
+      <th>施設名</th>
+      <td><%= @reservation.room.name %></td>
+    </tr>
+    <tr>
+      <th>施設画像</th>
+      <td>
+        <% if @reservation.room.image? %>
+          <%= image_tag @reservation.room.image.url %>
+        <% else %>
+          <%= image_tag ("room_default.png") %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @reservation.room.address %></td>
+    </tr>
+    <tr>
+      <th>紹介文</th>
+      <td><%= @reservation.room.introduction %></td>
+    </tr>
+    <tr>
+      <th>宿泊料金</th>
+      <td><%= @reservation.room.fee %> 円</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= form_with(model: @reservation, url: edit_confirm_reservation_path) do |f| %>
+          <div>
+            <div>
+              <div><%= f.label :check_in,"チェックイン"%></div>
+              <div><%= f.date_field :check_in %></dev>
+            </div>
+            <div>
+              <div><%= f.label :check_out,"チェックアウト" %></div>
+              <div><%= f.date_field :check_out %></dev>
+            </div>
+            <div>
+              <div><%= f.label :users_num,"人数" %></div>
+              <div><%= f.text_field :users_num %> 人</dev>
+            </div>
+          </div>
+          <%= f.hidden_field :user_id,value: current_user.id %>
+          <%= f.hidden_field :room_id,value: @reservation.room.id %>
+          <%= f.hidden_field :id,value: @reservation.id %>
+          <div><%= f.submit "再予約する" %></div>
+          <div><%= link_to "キャンセル", :reservations %></div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+ </div>

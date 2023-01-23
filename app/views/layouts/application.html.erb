@@ -11,6 +11,36 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header class="header">
+    <div><a href="/">Potepan Share</a></div>
+    <% if user_signed_in? %>
+      <ul id="nav">
+      <li class="icon_name">
+      <% if current_user.icon? %>
+        <%= image_tag current_user.icon.url,class:"icon" %>
+      <% else %>
+        <%= image_tag ("default.png"),class:"icon" %>
+      <% end %>
+      <%= current_user.name %>
+        <ul class="hidden">
+          <li><%= link_to "施設登録", :new_room %></li>
+          <li><%= link_to "予約済み一覧", :reservations %></li>
+          <li><%= link_to "登録済み一覧", own_rooms_path %></li>
+          <li><%= link_to "アカウント設定", users_account_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path,method: :delete %></li>
+        </ul>
+        <li>
+      </ul>
+    <% else %>
+    <ul class="header-nav">
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+    </ul>
+    <% end %>
+  </header>
+  <%= yield %>
+  <footer class="footer">
+    <div>Potepan Share</div>
+  </footer>
   </body>
 </html>

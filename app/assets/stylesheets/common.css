@@ -1,0 +1,141 @@
+body{
+  margin:0;
+}
+a{
+  text-decoration: none;
+  cursor:pointer;
+}
+li{
+  list-style: none;
+}
+.notice{
+  background-color: #000;
+  color:#fff;
+  width:300px;
+  border:1px solid #000;
+  border-radius: 8px;
+  padding: 13px 20px;
+  margin:0 auto;
+  margin-bottom:30px;
+}
+.warning{
+  background-color:	#CD5C5C;
+  color:#fff;
+  width:300px;
+  border:1px solid #fff;
+  border-radius: 8px;
+  padding: 13px 20px;
+  margin:0 auto;
+  margin-bottom:30px;
+}
+.header{
+  background-color: #0f2350;
+  color:#fff;
+  display: flex;
+  justify-content: space-between;
+  align-items:baseline;
+  padding:20px 10px;
+}
+.header a{
+  color:#fff;
+}
+.header-nav{
+  display: flex;
+  justify-content: space-between;
+}
+.header-nav li:first-child{
+  padding-right:10px;
+}
+.hidden{
+  display:none;
+}
+.icon_name{
+  display: flex;
+  align-items: center;
+}
+#nav li ul{
+  position:absolute;
+  top:95px;
+  right:0px;
+  color:#000;
+  background-color: #0f2350;
+  border-bottom: 1px solid #fff;
+  padding:0;
+}
+#nav li ul li{
+  padding:5px;
+  border-bottom: 1px solid #fff;
+}
+.icon{
+  width:40px;
+}
+.footer{
+  background-color: #0f2350;
+  color:#fff;
+  display: flex;
+  align-items:baseline;
+  padding:100px 10px;
+}
+.wrapper{
+  width: 1200px;
+  margin: 0 auto;
+}
+.user_content{
+  margin:80px 0;
+}
+.user_content h3{
+  padding-left:40px;
+  font-size:1.8rem
+}
+.user_content_main{
+  display: flex;
+  justify-content: space-between;
+}
+.user_nav{
+  width: 25%;
+}
+.user_info{
+  width: 65%;
+  margin-right: 30px;
+}
+.user_table{
+  width:100%;
+  border-spacing: 0;
+}
+.user_table th{
+  padding:10px;
+  border-bottom: 1px solid #111;
+  text-align: left;
+}
+.user_table td{
+  padding:10px;
+}
+.btn_group{
+  display: flex;
+  justify-content: end;
+}
+.left_btn{
+  margin-right:10px;
+}
+.room_table{
+  width:1200px;
+  border-spacing: 0;
+  margin:0 auto 40px;
+}
+.room_table th,.room_table td{
+  padding:10px;
+  border: 1px solid #111;
+  text-align: center;
+}
+.room_title{
+  margin:30px auto;
+}
+.current_user_btn{
+  display: flex;
+  justify-content: space-between;
+  margin:30px auto 10px;
+}
+.search_box{
+  margin:30px auto;
+  width:800px;
+}
