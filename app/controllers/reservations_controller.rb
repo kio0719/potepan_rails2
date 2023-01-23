@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :set_reservation,only: [:edit,:edit_confirm,:update,:destroy]
   def index
     @reservations = Reservation.where(user_id: current_user.id)
     @room = Room.all
@@ -7,6 +8,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     if @reservation.invalid?
       @room = Room.find(@reservation.room_id)
+      flash['warning'] = "予約情報が不足しています。"
       render "rooms/show"
     else
       total_fee_date_calc
@@ -15,37 +17,44 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
+      flash['notice'] = "施設の予約を完了しました。"
       redirect_to :reservations
     else
-      render "confirm"
+      @room = Room.find(@reservation.room_id)
+      flash['warning'] = "予約情報が不足しています。"
+      render "rooms/show"
     end
   end
   def edit
-    @reservation = Reservation.find(params[:id])
   end
   def edit_confirm
-    @reservation = Reservation.find(params[:id])
     @reservation.attributes = reservation_params
     if @reservation.invalid?
+      flash['warning'] = "予約情報が不足しています。"
       render "edit"
     else
       total_fee_date_calc
     end
   end
   def update
-    @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
+      flash['notice'] = "施設の予約を変更しました。"
       redirect_to :reservations
     else
+      flash['warning'] = "予約情報が不足しています。"
       render "edit"
     end
   end
   def destroy
-    reservation = Reservation.find(params[:id])
-    reservation.destroy
+    @reservation.destroy
+    flash['notice'] = "施設の予約を削除しました。"
     redirect_to :reservations
   end
 
+  private
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
   def reservation_params
     params.require(:reservation).permit(:check_in,:check_out,:users_num,:user_id,:room_id)
   end

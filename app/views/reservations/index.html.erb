@@ -1,5 +1,8 @@
 <div class="wrapper">
   <h3 class="room_title">予約済み一覧</h3>
+  <% if flash['notice'] %>
+    <p class="notice"><%= flash['notice'] %></p>
+  <% end %>
   <table class="room_table">
     <thead>
       <tr>

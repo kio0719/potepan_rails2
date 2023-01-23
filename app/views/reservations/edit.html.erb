@@ -1,5 +1,8 @@
 <div class="wrapper">
   <h3 class="room_title">施設詳細</h3>
+  <% if flash['warning'] %>
+    <p class="warning"><%= flash['warning'] %></p>
+  <% end %>
   <%= render "shared/error",obj: @reservation %>
   <table  class="room_table">
     <tr>
@@ -55,14 +58,3 @@
     </tr>
   </table>
  </div>
-
-
-
-
-
-
- 
-
-
-
-

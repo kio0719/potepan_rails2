@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_q,only: :index
+  before_action :set_room,only: [:show,:edit,:update,:destroy]
   def index
     @results = @q.result
     @count = @results.count
@@ -14,33 +15,37 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     if @room.save
-      redirect_to :rooms
+      flash['notice'] = "施設が作成されました。"
+      redirect_to own_rooms_path
     else
+      flash['warning'] = "施設の作成に失敗しました。"
       render "new"
     end
   end
   def show
-    @room = Room.find(params[:id])
     @reservation = Reservation.new
   end
   def edit
-    @room = Room.find(params[:id])
   end
   def update
-    @room = Room.find(params[:id])
     if @room.update(room_params)
-      redirect_to :rooms
+      flash['notice'] = "施設情報が編集されました。"
+      redirect_to own_rooms_path
     else
+      flash['warning'] = "施設情報の編集に失敗しました。"
       render "edit"
     end
   end
   def destroy
-    room = Room.find(params[:id])
-    room.destroy
-    redirect_to :rooms
+    @room.destroy
+    flash['notice'] = "施設情報が削除されました。"
+    redirect_to own_rooms_path
   end
 
   private
+  def set_room
+    @room = Room.find(params[:id])
+  end
   def set_q
     @q = Room.ransack(params[:q])
   end
