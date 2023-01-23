@@ -1,6 +1,5 @@
 <div class="wrapper">
   <h3  class="room_title">予約内容の確認</h3>
-  
   <table class="room_table">
     <tr>
       <td>チェックイン</td>
@@ -29,7 +28,6 @@
     <%= f.hidden_field :users_num,value: @reservation.users_num %>
     <%= f.hidden_field :user_id,value: @reservation.user_id %>
     <%= f.hidden_field :room_id,value: @reservation.room_id %>
-
     <p>上記内容で正しければ「確定」ボタンを押してください。</p>
     <ul class="btn_group">
       <li><%= link_to "キャンセル",room_path(@reservation.room_id),class: "left_btn" %></li>
